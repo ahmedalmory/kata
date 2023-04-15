@@ -1,23 +1,22 @@
 <?php
 
 use App\PrimeFactors;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class PrimeFactorsTest extends TestCase
 {
-    /**
-     * @test
-     * @dataProvider factors
-     * @return void
-     */
-    public function it_generates_prime_factors($number, $expected)
+    #[DataProvider('factors')]
+    #[Test]
+    public function it_generates_prime_factors($number, $expected): void
     {
         $result = (new PrimeFactors())->generate($number);
 
         $this->assertEquals($expected, $result);
     }
   
-    public static function factors()
+    public static function factors(): array
     {
         return [
             [1,[]],
