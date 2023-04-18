@@ -7,8 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class PrimeFactorsTest extends TestCase
 {
-    #[DataProvider('factors')]
-    #[Test]
+    #[Test] #[DataProvider('factors')]
     public function it_generates_prime_factors($number, $expected): void
     {
         $result = (new PrimeFactors())->generate($number);
